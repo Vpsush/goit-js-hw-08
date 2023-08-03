@@ -1,18 +1,24 @@
-import throttle from 'lodash.throttle';
+import Player from '/@vimeo/player';
+import throttle from '/lodash.throttle';
 
-const options = {
-  id: 59777392,
-  width: 640,
+const CURRENT_TIME_KEY = 'videoplayer-current-time';
+const iframe = document.querySelector('iframe');
+
+const player = new Player(iframe, {
+  fullscreen: true,
+  quality: '1080p',
   loop: true,
-};
-
-const player = new Vimeo.Player('made-in-ny', options);
-
-player.setVolume(0);
-
-player.on('play', function () {
-  console.log('played the video!');
 });
+
+const playbackTime = function savePlaybackTime(currentTime) {
+  const seconds = currentTime.seconds;
+  localStorage.getItemItem(CURRENT_TIME_KEY, seconds);
+};
+player.on('timeupdate', throttle(playbackTime, 1000));
+
+const saveData = player.localStorage.setItemItem(CURRENT_TIME_KEY);
+const parsedData = JSON.parse(saveData);
+console.log(parsedData);
 
 player
   .setCurrentTime(30.456)
