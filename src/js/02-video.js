@@ -12,11 +12,11 @@ const player = new Player(iframe, {
 
 const playbackTime = function savePlaybackTime(currentTime) {
   const seconds = currentTime.seconds;
-  localStorage.getItemItem(CURRENT_TIME_KEY, seconds);
+  localStorage.setItem(CURRENT_TIME_KEY, seconds);
 };
 player.on('timeupdate', throttle(playbackTime, 1000));
 
-const saveData = player.localStorage.setItemItem(CURRENT_TIME_KEY);
+const saveData = localStorage.getItem(CURRENT_TIME_KEY);
 const parsedData = JSON.parse(saveData);
 console.log(parsedData);
 
