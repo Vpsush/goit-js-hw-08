@@ -12,6 +12,7 @@ const player = new Player(iframe, {
 
 const playbackTime = function savePlaybackTime(currentTime) {
   const seconds = currentTime.seconds;
+  console.log(seconds);
   localStorage.setItem(CURRENT_TIME_KEY, seconds);
 };
 player.on('timeupdate', throttle(playbackTime, 1000));
