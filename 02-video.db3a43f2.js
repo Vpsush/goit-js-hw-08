@@ -1,0 +1,2 @@
+document.addEventListener("DOMContentLoaded",(function(){const e="videoplayer-current-time",t=document.querySelector("#vimeo-player"),o=new Vimeo.Player(t,{fullscreen:!0,quality:"1080p",loop:!0});o.on("timeupdate",_.throttle((function(t){const o=t.seconds;console.log(o),localStorage.setItem(e,o)}),1e3));const n=localStorage.getItem(e),c=JSON.parse(n);console.log(c),o.setCurrentTime(30.456).then((function(e){})).catch((function(e){e.name}))}));
+//# sourceMappingURL=02-video.db3a43f2.js.map
