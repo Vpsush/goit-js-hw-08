@@ -1,8 +1,11 @@
+import Player from '@vimeo/player';
+import throttle from 'lodash.throttle';
+
 document.addEventListener('DOMContentLoaded', function () {
   const CURRENT_TIME_KEY = 'videoplayer-current-time';
   const iframe = document.querySelector('#vimeo-player'); // Use the correct ID
 
-  const player = new Vimeo.Player(iframe, {
+  const player = new Player(iframe, {
     fullscreen: true,
     quality: '1080p',
     loop: true,
@@ -13,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(seconds);
     localStorage.setItem(CURRENT_TIME_KEY, seconds);
   };
-  player.on('timeupdate', _.throttle(playbackTime, 1000));
+  player.on('timeupdate', throttle(playbackTime, 1000));
 
   const saveData = localStorage.getItem(CURRENT_TIME_KEY);
   const parsedData = JSON.parse(saveData);
