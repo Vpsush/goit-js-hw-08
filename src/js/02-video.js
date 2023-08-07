@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   console.log(parsedData);
 
   player
-    .setCurrentTime(30.456)
+    .setCurrentTime(parsedData)
     .then(function (seconds) {
       // seconds = the actual time that the player seeked to
     })
