@@ -31,7 +31,7 @@ function onTextAreaSubmit(event) {
   const message = event.target.value;
   localStorage.setItem(storageKey, message);
 }
-function populateTextarea(email, message) {
+function populateTextarea() {
   const savedMessage = localStorage.getItem(storageKey);
   if (savedMessage) {
     return;
