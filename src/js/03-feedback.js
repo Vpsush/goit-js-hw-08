@@ -5,7 +5,6 @@ import throttle from 'lodash.throttle';
 const storageKey = 'feedback-form-state';
 const formData = {};
 
-populateTextarea();
 const refs = {
   form: document.querySelector('.feedback-form'),
   textarea: document.querySelector('.feedback-form textarea'),
