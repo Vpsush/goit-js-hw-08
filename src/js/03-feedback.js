@@ -2,7 +2,6 @@ import throttle from 'lodash.throttle';
 
 const storageKey = 'feedback-form-state';
 const formData = JSON.parse(localStorage.getItem(storageKey)) || {};
-console.log(formData);
 
 const refs = {
   form: document.querySelector('.feedback-form'),
@@ -25,6 +24,7 @@ function onFormSubmit(e) {
   console.log(`Email: ${form}, Message: ${textarea}`);
   e.currentTarget.reset();
   localStorage.removeItem(storageKey);
+  console.log(formData);
 }
 function onTextAreaSubmit(e) {
   formData[e.target.name] = e.target.value;
