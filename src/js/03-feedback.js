@@ -14,6 +14,15 @@ refs.form.addEventListener('input', throttle(onTextAreaSubmit, 500));
 
 function onFormSubmit(e) {
   e.preventDefault();
+  const {
+    elements: { form, textarea },
+  } = e.currentTarget;
+
+  if (form === '' || textarea === '') {
+    return console.log('Please fill in all the fields!');
+  }
+
+  console.log(`Email: ${form}, Message: ${textarea}`);
   e.currentTarget.reset();
   localStorage.removeItem(storageKey);
 }
