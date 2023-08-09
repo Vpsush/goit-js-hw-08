@@ -13,15 +13,17 @@ refs.form.addEventListener('input', throttle(onTextAreaSubmit, 500));
 
 function onFormSubmit(e) {
   e.preventDefault();
-  const {
-    elements: { form, textarea },
-  } = e.currentTarget;
+  const { email, message } = e.currentTarget.elements;
 
-  if (form === '' || textarea === '') {
+  if (email === '' || message === '') {
     return console.log('Please fill in all the fields!');
   }
 
-  console.log(`Email: ${form}, Message: ${textarea}`);
+  const info = {
+    email: email.value,
+    message: message.value,
+  };
+  console.log(info);
   e.currentTarget.reset();
   localStorage.removeItem(storageKey);
   console.log(formData);
