@@ -6,7 +6,7 @@ const refs = {
 };
 
 const storageKey = 'feedback-form-state';
-const formSaveData = JSON.parse(localStorage.getItem(storageKey));
+let formSaveData = JSON.parse(localStorage.getItem(storageKey));
 const formData = {};
 
 const { email, message } = refs.form.elements;
@@ -22,8 +22,8 @@ refs.form.addEventListener('input', throttle(onTextAreaSubmit, 500));
 function onFormSubmit(e) {
   e.preventDefault();
 
-  if (email === '' || message === '') {
-    return console.log('Please fill in all the fields!');
+  if (email.value === '' || message.value === '') {
+    return alert('Please fill in all the fields!');
   }
 
   const info = {
@@ -35,7 +35,7 @@ function onFormSubmit(e) {
   localStorage.removeItem(storageKey);
   console.log(formData);
 }
-function onTextAreaSubmit(e) {
-  formData[e.target.name] = e.target.value;
+function onTextAreaSubmit() {
+  dataForm = { email: email.value, message: message.value };
   localStorage.setItem(storageKey, JSON.stringify(formData));
 }
