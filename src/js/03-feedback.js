@@ -35,7 +35,7 @@ function onFormSubmit(e) {
   localStorage.removeItem(storageKey);
   console.log(formData);
 }
-function onTextAreaSubmit() {
-  dataForm = { email: email.value, message: message.value };
+function onTextAreaSubmit(e) {
+  formData[e.target.name] = e.target.value;
   localStorage.setItem(storageKey, JSON.stringify(formData));
 }
