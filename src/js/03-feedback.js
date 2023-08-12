@@ -7,13 +7,15 @@ const refs = {
 
 const storageKey = 'feedback-form-state';
 let formSaveData = JSON.parse(localStorage.getItem(storageKey));
-const formData = {};
+let formData = {};
 
 const { email, message } = refs.form.elements;
 
 if (formSaveData) {
-  email.value = formSaveData.email;
-  message.value = formSaveData.message;
+  email.value = formSaveData.email || '';
+  message.value = formSaveData.message || '';
+  formData.email = formSaveData.email || '';
+  formData.message = formSaveData.message || '';
 }
 
 refs.form.addEventListener('submit', onFormSubmit);
@@ -26,14 +28,15 @@ function onFormSubmit(e) {
     return alert('Please fill in all the fields!');
   }
 
-  const info = {
-    email: email.value,
-    message: message.value,
-  };
-  console.log(info);
+  // const info = {
+  //   email: email.value,
+  //   message: message.value,
+  // };
+  // console.log(info);
   e.currentTarget.reset();
   localStorage.removeItem(storageKey);
   console.log(formData);
+  formData = {};
 }
 function onTextAreaSubmit(e) {
   formData[e.target.name] = e.target.value;
